@@ -7,8 +7,8 @@ var matchSchema = mongoose.Schema({
   tagline: String,
   image_url: String,
   date: String,
-  teama: String,
-  teamb: String,
+  team1: String,
+  team2: String,
   city: String
 
 });
