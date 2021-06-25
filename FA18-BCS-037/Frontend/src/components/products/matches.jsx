@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import productService from "./../../services/ProductsService";
+import productService from "../../services/ProductsService";
 import userService from "../../services/UserService";
 const useStyles = makeStyles((theme) => ({
   addBtn: {
@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Products = (props) => {
-  const [products, setProducts] = React.useState([]);
+const Matches = (props) => {
+  const [matches, setProducts] = React.useState([]);
   const classes = useStyles();
   const page = props.match.params.page ? props.match.params.page : 1;
   const [total, setTotal] = React.useState(0);
@@ -26,7 +26,7 @@ const Products = (props) => {
     productService
       .getProducts(page, perPage)
       .then((data) => {
-        setProducts(data.products);
+        setProducts(data.matches);
         setTotal(data.total);
       })
       .catch((err) => {
@@ -38,11 +38,11 @@ const Products = (props) => {
   // console.log("Inside Products Component");
   const handleNewProductClick = () => {
     console.log(props);
-    props.history.push("/products/new");
+    props.history.push("/matches/new");
   };
   return (
     <div>
-      <h1>Products</h1>
+      <h1>Matches</h1>
       Records Per Page:{" "}
       <select
         value={perPage}
@@ -62,12 +62,12 @@ const Products = (props) => {
           <AddIcon />
         </Fab>
       )}
-      {products.length == 0 ? (
+      {matchs.length == 0 ? (
         <p>There are no products</p>
       ) : (
         <Grid container spacing={3}>
-          {products.map((product, index) => (
-            <SingleProduct key={index} product={product} onDelete={getData} />
+          {matches.map((match, index) => (
+            <SingleProduct key={index} match={match} onDelete={getData} />
           ))}
         </Grid>
       )}
@@ -78,11 +78,11 @@ const Products = (props) => {
           shape="rounded"
           onChange={(e, value) => {
             console.log(value);
-            props.history.push("/products/" + value);
+            props.history.push("/matches/" + value);
           }}
         />{" "}
         Total: {total} Showing {(page - 1) * perPage} to{" "}
-        {(page - 1) * perPage + products.length}
+        {(page - 1) * perPage + matches.length}
       </Grid>
     </div>
   );
