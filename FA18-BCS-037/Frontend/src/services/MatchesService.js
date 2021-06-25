@@ -1,5 +1,5 @@
 import GenericService from "./GenericService";
-class ProductsService extends GenericService {
+class MatchesService extends GenericService {
   constructor() {
     super();
   }
@@ -11,5 +11,5 @@ class ProductsService extends GenericService {
   getSingleProduct = (id) => this.get("matches/" + id);
 }
 
-let productService = new ProductsService();
-export default productService;
+let MatchService = new MatchesService();
+export default MatchService;

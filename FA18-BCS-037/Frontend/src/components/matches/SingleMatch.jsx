@@ -1,15 +1,15 @@
 import React from "react";
 import { Grid, Button } from "@material-ui/core";
-import productService from "./../../services/ProductsService";
+import MatchService from "../../services/MatchesService";
 import { withRouter } from "react-router";
 import userService from "../../services/UserService";
-const SingleProduct = (props) => {
+const SingleMatch = (props) => {
   const { product, onDelete, history } = props;
   console.log(props);
   return (
     <Grid item xs={4}>
       <h2>
-        {product.name}{" "}
+        {match.name}{" "}
         {userService.isAdmin() && (
           <>
             <Button
@@ -26,8 +26,8 @@ const SingleProduct = (props) => {
               variant="contained"
               color="secondary"
               onClick={(e) => {
-                productService
-                  .deleteProduct(product._id)
+                matchService
+                  .deleteProduct(match._id)
                   .then((data) => {
                     console.log(data);
                     onDelete();
@@ -42,10 +42,10 @@ const SingleProduct = (props) => {
           </>
         )}
       </h2>
-      <p>{product.price}</p>
+      <p>{match.price}</p>
       <hr />
     </Grid>
   );
 };
 
-export default withRouter(SingleProduct);
+export default withRouter(SingleMatch);

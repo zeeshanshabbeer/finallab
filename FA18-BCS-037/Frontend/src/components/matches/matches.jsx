@@ -1,12 +1,12 @@
 import React from "react";
-import SingleProduct from "./SingleProduct";
+import SingleMatch from "./SingleMatch";
 import Pagination from "@material-ui/lab/Pagination";
 import { Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import productService from "../../services/ProductsService";
+import MatchService from "../../services/MatchesService";
 import userService from "../../services/UserService";
 const useStyles = makeStyles((theme) => ({
   addBtn: {
@@ -23,8 +23,7 @@ const Matches = (props) => {
   const [total, setTotal] = React.useState(0);
   const [perPage, setPerPage] = React.useState(10);
   const getData = () => {
-    productService
-      .getProducts(page, perPage)
+    MatchService.getProducts(page, perPage)
       .then((data) => {
         setProducts(data.matches);
         setTotal(data.total);
@@ -35,7 +34,6 @@ const Matches = (props) => {
   };
   // getData();
   React.useEffect(getData, [page, perPage]);
-  // console.log("Inside Products Component");
   const handleNewProductClick = () => {
     console.log(props);
     props.history.push("/matches/new");
@@ -67,7 +65,7 @@ const Matches = (props) => {
       ) : (
         <Grid container spacing={3}>
           {matches.map((match, index) => (
-            <SingleProduct key={index} match={match} onDelete={getData} />
+            <SingleMatch key={index} match={match} onDelete={getData} />
           ))}
         </Grid>
       )}
@@ -88,4 +86,4 @@ const Matches = (props) => {
   );
 };
 
-export default Products;
+export default Matches;

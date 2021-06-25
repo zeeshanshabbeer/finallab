@@ -7,11 +7,11 @@ import {
 } from "react-router-dom";
 import TopMenu from "./components/TopMenu";
 import LandingPage from "./components/LandingPage";
-import Products from "./components/products/Products";
+import Matches from "./components/matches/matches";
 import ContactUs from "./components/ContactUs";
 import NotFound from "./components/NotFound";
-import NewProduct from "./components/products/NewProduct";
-import UpdateProduct from "./components/products/UpdateProduct";
+import NewMatch from "./components/matches/NewMatch";
+import UpdateMatch from "./components/matches/UpdateMatch";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import { ToastContainer, toast } from "react-toastify";
@@ -28,9 +28,9 @@ function App() {
             <Route path="/register" exact component={Register} />
             <Route path="/contact-us" exact component={ContactUs} />
             <Route path="/contact-us" exact component={ContactUs} />
-            <Route path="/products/new" component={NewProduct} />
-            <Route path="/products/update/:id" component={UpdateProduct} />
-            <Route path="/products/:page?" component={Products} />
+            <Route path="/matches/new" component={NewMatch} />
+            <Route path="/matches/update/:id" component={UpdateMatch} />
+            <Route path="/matches/:page?" component={Matches} />
             <Route path="/not-found" component={NotFound} />
             <Route path="/" exact component={LandingPage} />
             <Redirect to="/not-found" />
